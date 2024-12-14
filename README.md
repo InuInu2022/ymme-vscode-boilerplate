@@ -32,6 +32,10 @@ YMM4 plugin boilerplate template repository
 - ユニットテスト: `tests`フォルダだけ用意しています
   - お好きなテストフレームワークをお使いください
 
+### バージョン
+
+- YMM v4.34
+
 ## Reference
 
 YMM4のプラグイン開発は以下を参照してください。
