@@ -34,7 +34,8 @@ YMM4 plugin boilerplate template repository
 
 ### バージョン
 
-- YMM v4.34
+- YMM v4.35.xx 以降
+- ※YMM v4.34.xx 以前は [tags](https://github.com/InuInu2022/ymme-vscode-boilerplate/releases/tag/v4.34) から旧バージョンを利用することができます
 
 ## Reference
 
