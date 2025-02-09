@@ -18,6 +18,8 @@ YMM4 plugin boilerplate template repository
 - ビルド時に `LICENSE` や `README.md` がdllやymmeに含まれるように設定済
 - `licenses`フォルダ以下のファイルもdllやymmeに含まれるように
 - [MinVer](https://github.com/adamralph/minver)ライブラリでgitのタグから自動でSemVerが付きます
+  - 出力されるymmeファイル名にバージョン番号を含むようになりました `YourPluginName.v.0.x.x.ymme`
+  - 展開すると内部にバージョン番号を含まない`YourPluginName`ができるためバージョンアップ時も問題ありません
 - VSCode: VSCodeの`publish`タスクでも上記ができるようにしています
 - VSCode: プラグインをYMM4ごとデバッガ接続で起動することができます
 - gitignore, editorconfig設定済み
@@ -46,3 +48,4 @@ YMM4のプラグイン開発は以下を参照してください。
 - [manju-summoner/YukkuriMovieMaker.Plugin.Community: YMM4コミュニティで開発するYMM4プラグインです。 プラグインのサンプルも兼ねています。 ここで開発されたプラグインはYMM4にデフォルトで組み込まれます。](https://github.com/manju-summoner/YukkuriMovieMaker.Plugin.Community)
 - [manju-summoner/SampleReversePlaybackAudioEffectPlugin: キャッシュ機構を備えたYMM4音声エフェクトの実装サンプルです。音声の逆再生機能を提供します。ただし、仮実装のため実用には適しません。](https://github.com/manju-summoner/SampleReversePlaybackAudioEffectPlugin)
 - [manju-summoner/YukkuriMovieMaker.Generator](https://github.com/manju-summoner/YukkuriMovieMaker.Generator)
+- [YMM4 API Documentation](https://ymm-api.pages.dev/#ymm4)
