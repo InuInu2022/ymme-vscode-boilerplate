@@ -31,6 +31,7 @@
     <!-- exclude -->
     <ExcludeFromPublish Include="**\*.pdb" />
     <ExcludeFromPublish Include="**\*.xml" />
+    <ExcludeFromPublish Include="**\*.log" />
     <!-- YMM4 plugins -->
     <Reference Include="$(YMM4_PATH)\YukkuriMovieMaker.Plugin.dll">
       <Private>false</Private>
@@ -69,10 +70,10 @@
     <RemoveDir Directories="$(OutputPath)/ymme/" />
   </Target>
   <Target Name="MakeZipPackage" AfterTargets="Publish">
-    <MakeDir Directories="$(OutputPath)/../../../../../publish/" />
+    <MakeDir Directories="$(MSBuildThisFileDirectory)../publish/" />
     <PropertyGroup>
       <ZipFileName>$(AssemblyName).v.$(Version).ymme</ZipFileName>
-      <ZipDestination>$(OutputPath)/../../../../../../publish/$(ZipFileName)</ZipDestination>
+      <ZipDestination>$(MSBuildThisFileDirectory)../publish/$(ZipFileName)</ZipDestination>
       <PackageFolder>$(OutputPath)/ymme/$(AssemblyName)</PackageFolder>
       <ZipSource>$(OutputPath)/ymme</ZipSource>
     </PropertyGroup>
@@ -99,11 +100,16 @@
     </Delete>
 
     <ItemGroup>
-      <PublishFiles Include="$(OutputPath)/publish/**/*.*" />
+      <PublishFiles Include="$(OutputPath)/publish/**/*.*"
+        Exclude="$(OutputPath)/publish/**/*.pdb" />
     </ItemGroup>
     <Copy
       SourceFiles="@(PublishFiles)"
       DestinationFiles="@(PublishFiles->'$(PackageFolder)/%(RecursiveDir)%(Filename)%(Extension)')" />
+    <!-- 念のためymme配下のpdbを削除 -->
+    <ItemGroup>
+      <PdbFilesToDelete Include="$(PackageFolder)\**\*.pdb" />
+    </ItemGroup>
     <ZipDirectory
       SourceDirectory="$(ZipSource)"
       DestinationFile="$(ZipDestination)"
@@ -111,6 +117,7 @@
 
     <Message Text="Zip package created at: $(ZipDestination)" Importance="high" />
 
-    <Unzip SourceFiles="$(OutputPath)/../../../../../publish/$(ZipFileName)" DestinationFolder="$(YMM4_PATH)\user\plugin\$(AssemblyName)\" />
+    <Unzip SourceFiles="$(MSBuildThisFileDirectory)../publish/$(ZipFileName)"
+      DestinationFolder="$(YMM4_PATH)\user\plugin\$(AssemblyName)\" />
   </Target>
 </Project>
